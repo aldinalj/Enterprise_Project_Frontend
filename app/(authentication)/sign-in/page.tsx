@@ -31,9 +31,11 @@ export default function SignIn() {
       controller.abort();
     }, timeout);
 
-    fetch("http://localhost:8080/user/login", {
+    fetch("http://localhost:8080/auth/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(user),
       //credentials: "include",
       signal,
@@ -41,17 +43,36 @@ export default function SignIn() {
       .then((response) => {
         clearTimeout(timeoutId);
         setLoading(false);
+
         if (response.ok) {
           console.log("Login successful");
+          return response.json();
         } else {
-          setError("Invalid username or password.");
+          return response.json().then((errData) => {
+            setError("Invalid username or password.");
+            throw new Error(errData.message || "Invalid username or password");
+          });
         }
       })
-      .catch(() => {
+      .then((data) => {
+        const { token } = data;
+
+        if (!token) {
+          setError("No token recieved from server.");
+          return;
+        }
+        sessionStorage.setItem("authToken", token);
+      })
+      .catch((error) => {
+        if (error.name === "AbortError") {
+          setError("Request timed out. Please try again.");
+        } else {
+          setError(error.message || "An error occurred. Please try again.");
+        }
         setLoading(false);
-        setError("An error occurred. Please try again.");
       });
   }
+
   return (
     <div className="p-4">
       <header>Sign In</header>
