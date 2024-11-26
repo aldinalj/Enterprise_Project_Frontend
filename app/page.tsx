@@ -65,16 +65,30 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <p>Credentials</p>
+    <div className="flex items-center justify-center min-h-screen bg-black">
+      <div className="w-full max-w-md bg-sky-600 rounded-lg p-10 border-4 border-sky-800 shadpw-lg">
+        <header className="text-4xl font-bold text-center text-sky-100 mb-6">
+          Credentials
+          </header>
+          <div className="space-y-2">
       {user ? (
         <>
-          <p>Username: {user.username}</p>
-          <p>Password: {user.password}</p>
+          <p className="text-lg text-sky-200 break-words">
+            <span className="font-semibold">
+              Username: {user.username}
+              </span> 
+            </p>
+          <p className="text-lg text-sky-200 break-words">
+          <span className="font-semibold">
+            Password: {user.password}
+            </span> 
+            </p>
         </>
       ) : (
         <p>No user data available.</p>
       )}
+    </div>
+    </div>
     </div>
   );
 }

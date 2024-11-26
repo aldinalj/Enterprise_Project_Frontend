@@ -74,12 +74,15 @@ export default function SignIn() {
   }
 
   return (
-    <div className="p-4">
-      <header>Sign In</header>
-      <form onSubmit={onSubmit}>
+    <div className="flex items-center justify-center min-h-screen bg-green-700">
+    <div className="w-full max-w-md bg-green-900 rounded-lg shadow-lg p-8">
+      <header className="text-4xl font-bold text-white flex items-center justify-center">Sign In</header>
+      <form onSubmit={onSubmit} className="space-y-4 text-white">
         {/* Username */}
         <div>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username" className="block text-white">
+            Username
+          </label>
           <input
             type="text"
             name="username"
@@ -87,6 +90,7 @@ export default function SignIn() {
             onChange={handleUserChange}
             placeholder="Enter your username"
             required
+            className="mt-1 block w-full p-2  rounded-md shadow-sm text-green-950 focus:outline-none bg-green-200 placeholder-green-900"
           />
         </div>
 
@@ -100,13 +104,25 @@ export default function SignIn() {
             onChange={handleUserChange}
             placeholder="Enter your password"
             required
+            className="mt-1 block w-full p-2 rounded-md shadow-sm text-green-950 focus:outline-none bg-green-200 placeholder-green-900"
           />
         </div>
-        {error && <p className="text-red-500">{error}</p>}
-        <button type="submit" disabled={loading}>
-          {loading ? "Signing in..." : "Sign In"}
+        {error && <p className="text-red-700">{error}</p>}
+        <button
+        type="submit"
+        disabled={loading}
+        className={`w-full py-2 px-4 text-white font-semibold rounded-md shadow-sm ${
+          loading
+            ? "bg-green-600 cursor-not-allowed"
+            : "bg-green-700 hover:bg-green-600 focus:ring-2 focus:ring-green-500"
+        }`}
+      >
+        {loading ? "Signing in..." : "Sign In"}
+
         </button>
       </form>
     </div>
+    </div>
+
   );
 }
