@@ -30,7 +30,7 @@ export default function DeleteUserPage() {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to delete the user.");
+          throw new Error("Failed to delete  user.");
         }
         setMessage("User deleted successfully!");
       })

@@ -33,9 +33,7 @@ export default function Home() {
         clearTimeout(timeoutId);
         if (!response.ok) {
           return response.json().then((errorData) => {
-            throw new Error(
-              errorData.message || "Failed to fetch user details"
-            );
+            throw new Error(errorData.message);
           });
         }
         return response.json();
@@ -49,9 +47,7 @@ export default function Home() {
         if (error.name === "AbortError") {
           setError("Request timed out. Please try again.");
         } else {
-          setError(
-            error.message || "Something went wrong when fetching user details."
-          );
+          setError(error.message || "Something went wrong when fetching user details.");
         }
       })
 

@@ -54,7 +54,7 @@ export default function SignIn() {
         } else {
           return response.json().then((errData) => {
             setError("Invalid username or password.");
-            throw new Error(errData.message || "Invalid username or password");
+            throw new Error(errData.message);
           });
         }
       })
@@ -69,19 +69,7 @@ export default function SignIn() {
         sessionStorage.setItem("authToken", token);
         sessionStorage.setItem("role", role);
 
-        switch (role) {
-          case "USER":
-            router.push("/");
-            break;
-
-          case "ADMIN":
-            router.push("/admin");
-            break;
-
-          default:
-            console.error(`Unexpected role: ${role}`);
-            router.push("/sign-in");
-        }
+        role.match("ADMIN") ? router.push("/admin") : router.push("/");
       })
 
       .catch((error) => {
@@ -95,7 +83,7 @@ export default function SignIn() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-green-700">
+    <div className="flex items-center justify-center min-h-screen bg-black">
       <div className="w-full max-w-md bg-green-900 rounded-lg shadow-lg p-8">
         <header className="text-4xl font-bold text-white flex items-center justify-center">
           Sign In

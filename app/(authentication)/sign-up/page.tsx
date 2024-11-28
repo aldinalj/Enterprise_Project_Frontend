@@ -39,7 +39,7 @@ export default function SignUp() {
             Username
           </label>
           <input
-            className="w-full px-4 py-2 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:border-emerald-300"
             placeholder="username.."
             type="text"
             name="username"
@@ -53,7 +53,7 @@ export default function SignUp() {
             Password
           </label>
           <input
-            className="w-full px-4 py-2 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:border-emerald-300"
             placeholder="password.."
             type="password"
             name="password"
