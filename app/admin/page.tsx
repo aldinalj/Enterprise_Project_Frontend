@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import BackButton from "../_components/GoBackButton";
+import LogoutButton from "../_components/LogoutButton";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -30,6 +31,7 @@ export default function AdminPage() {
   >
     Delete User
   </button>
+  <LogoutButton />
 </div>
 </div>
 
