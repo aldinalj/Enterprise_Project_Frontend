@@ -1,7 +1,7 @@
 "use client";
 import { use, useEffect, useState } from "react";
 import { IUser } from "./_types/IUser";
-import LogoutButton from "./_components/LogoutButton";
+import LogoutButton from "./_components/LogOutButton";
 
 export default function Home() {
   const [user, setUser] = useState<IUser | null>(null);
@@ -62,7 +62,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
+    <div className="flex items-center justify-center min-h-screen flex-col space-y-5 bg-black">
       <div className="w-full max-w-md bg-sky-600 rounded-lg p-10 border-4 border-sky-800 shadpw-lg">
         <header className="text-4xl font-bold text-center text-sky-100 mb-6">
           Credentials
@@ -85,9 +85,11 @@ export default function Home() {
         <p>No user data available.</p>
       )}
 
-<LogoutButton />
+
     </div>
     </div>
+    <LogoutButton />
     </div>
+    
   );
 }

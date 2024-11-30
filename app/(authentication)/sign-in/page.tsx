@@ -48,16 +48,16 @@ export default function SignIn() {
         clearTimeout(timeoutId);
         setLoading(false);
 
-        if (response.ok) {
-          console.log("Login successful");
-          return response.json();
-        } else {
+        if (!response.ok) {
           return response.json().then((errData) => {
             setError("Invalid username or password.");
             throw new Error(errData.message);
           });
         }
+        console.log("Login successfull!")
+        return response.json();
       })
+
       .then((data: IAuthResponse) => {
         const token = data.token;
         const role = data.role;
@@ -69,7 +69,9 @@ export default function SignIn() {
         sessionStorage.setItem("authToken", token);
         sessionStorage.setItem("role", role);
 
-        role.match("ADMIN") ? router.push("/admin") : router.push("/");
+        role.match("USER") && router.push("/");
+        role.match("ADMIN") && router.push("/admin");
+
       })
 
       .catch((error) => {

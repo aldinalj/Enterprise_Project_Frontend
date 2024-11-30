@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import BackButton from "../_components/GoBackButton";
-import LogoutButton from "../_components/LogoutButton";
+import LogoutButton from "../_components/LogOutButton";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -21,7 +21,7 @@ export default function AdminPage() {
 <h1 className="text-3xl font-bold text-center text-indigo-600 mt-8">
   Welcome to the admin page
 </h1>
-<div className="mt-6 text-center">
+<div className="mt-6 text-center space-y-5">
   <p className="text-lg text-indigo-500 mb-4">
     What would you like to do?
   </p>
