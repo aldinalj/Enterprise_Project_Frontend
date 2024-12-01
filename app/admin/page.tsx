@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import BackButton from "../_components/GoBackButton";
 import LogoutButton from "../_components/LogOutButton";
+import GoBackButton from "../_components/GoBackButton";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -39,7 +39,7 @@ export default function AdminPage() {
 
 <div>
   <h1>YOU SHALL NOT PASS!!!</h1>
-  <BackButton />
+  <GoBackButton />
 </div>
 
 )}

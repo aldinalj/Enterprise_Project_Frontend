@@ -21,7 +21,7 @@ export default function DeleteUserPage() {
       return;
     }
 
-    fetch(`http://localhost:8080/admin/deleteUser?username=${encodeURIComponent(username)}`, {
+    fetch(`http://localhost:8080/admin/delete-user?username=${encodeURIComponent(username)}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
