@@ -4,6 +4,8 @@ import { IActivity } from "../../_types/IActivity";
 import ActivityCard from "@/app/_components/ActivityCard";
 import GoBackButton from "@/app/_components/GoBackButton";
 import { useRouter } from "next/navigation";
+import GoToSignInButton from "@/app/_components/GoToSignInButton";
+import GoToSignUpButton from "@/app/_components/GoToSignUpButton";
 
 export default function ActivitiesPage() {
   const [activities, setActivities] = useState<IActivity[]>([]);
@@ -14,15 +16,11 @@ export default function ActivitiesPage() {
   const router = useRouter();
 
   useEffect(() => {
-
-  if (!token) {
-    setError("Token could not be found. Please log in to access this page.");
-    router.push("/login");
-    return;
-  }
-
-    fetch("http://localhost:8080/activities/all")
-    
+    fetch("http://localhost:8080/activities/all", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           return response.json().then((errorData) => {
@@ -45,8 +43,7 @@ export default function ActivitiesPage() {
       .finally(() => {
         setLoading(false);
       });
-
-    }, []);
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -54,7 +51,7 @@ export default function ActivitiesPage() {
 
   return (
     <main>
-      {role ? (
+      {token ? (
         <div>
           <h1 className="text-center mt-3 text-4xl">Activities</h1>
           <div className="flex items-center justify-center min-h-screen overflow-auto">
@@ -70,9 +67,15 @@ export default function ActivitiesPage() {
           </div>
         </div>
       ) : (
-        <div className="text-center">
-          <h1>Login or register to access this page.</h1>
-          <GoBackButton />
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <h1 className="text-2xl font-bold mb-6">
+            Log in or register to access this page
+          </h1>
+
+          <div className="space-y-5">
+            <GoToSignInButton />
+            <GoToSignUpButton />
+          </div>
         </div>
       )}
       {error && <p className="text-red-500 text-center">{error}</p>}

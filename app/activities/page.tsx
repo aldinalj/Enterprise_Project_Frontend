@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import BackButton from "../_components/GoBackButton";
 import LogoutButton from "../_components/LogOutButton";
+import GoToSignInButton from "../_components/GoToSignInButton";
+import GoToSignUpButton from "../_components/GoToSignUpButton";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -12,13 +14,13 @@ export default function AdminPage() {
     router.push("/activities/all");
   };
 
-  const navigateToActivityById = () => {
-    router.push("/activities/id");
-  };
+  // const navigateToActivityById = () => {
+  //   router.push("/activities/id");
+  // };
 
-  const navigateToActivitiesByCode = () => {
-    router.push("/activities/code");
-  };
+  // const navigateToActivitiesByCode = () => {
+  //   router.push("/activities/code");
+  // };
 
   return (
     <main>
@@ -43,7 +45,7 @@ export default function AdminPage() {
     All activities
   </button>
 
-  <button
+  {/* <button
     onClick={navigateToActivityById}
     className="px-6 py-2 bg-indigo-400 text-white font-medium rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition-all"
   >
@@ -55,7 +57,7 @@ export default function AdminPage() {
     className="px-6 py-2 bg-indigo-400 text-white font-medium rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition-all"
   >
     Search activities by weather code
-  </button>
+  </button> */}
 
   <LogoutButton />
 </div>
@@ -63,10 +65,18 @@ export default function AdminPage() {
 </div>
 
 ) : (
+  
 
-<div>
-  <h1>Log in or register to access this page</h1>
-  <BackButton />
+<div className="flex flex-col items-center justify-center min-h-screen">
+  <h1 className="text-2xl font-bold mb-6">
+    Log in or register to access this page
+    </h1>
+
+  <div className="space-y-5">
+  <GoToSignInButton />
+  <GoToSignUpButton />
+  </div>
+
 </div>
 
 )}

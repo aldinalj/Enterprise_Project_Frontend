@@ -101,7 +101,7 @@ export default function SignIn() {
               name="username"
               value={user.username}
               onChange={handleUserChange}
-              placeholder="Enter your username"
+              placeholder="Username"
               required
               className="mt-1 block w-full p-2  rounded-md shadow-sm text-green-950 focus:outline-none bg-green-200 placeholder-green-900"
             />
@@ -115,7 +115,7 @@ export default function SignIn() {
               name="password"
               value={user.password}
               onChange={handleUserChange}
-              placeholder="Enter your password"
+              placeholder="Password"
               required
               className="mt-1 block w-full p-2 rounded-md shadow-sm text-green-950 focus:outline-none bg-green-200 placeholder-green-900"
             />

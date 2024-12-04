@@ -37,7 +37,7 @@ export default function SignUp() {
                 </label>
                 <input
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:border-emerald-300"
-                  placeholder="username.."
+                  placeholder="Username"
                   type="text"
                   name="username"
                   onChange={(event) => handleUserChange(event)}
@@ -51,7 +51,7 @@ export default function SignUp() {
                 </label>
                 <input
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:border-emerald-300"
-                  placeholder="password.."
+                  placeholder="Password"
                   type="password"
                   name="password"
                   onChange={(event) => handleUserChange(event)}
